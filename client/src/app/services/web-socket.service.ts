@@ -7,23 +7,11 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class WebSocketService {
 
-  socket : any;
-  server = io('http://localhost:3000', {transports: ['websocket']});
+  io = io('http://localhost:3000', {
+    withCredentials: true,
+    autoConnect: true
+  });
 
   constructor() {
-    this.socket = io(this.server)
-   }
-
-   listen(eventName: String) {
-
-     return new Observable((Subscriber) => {
-      this.socket.on(eventName, (data: any) => {
-        Subscriber.next(data);
-      })
-     })
-   }
-
-   emit(eventName: String, data: any) {
-     this.socket.emit(eventName, data);
    }
   }

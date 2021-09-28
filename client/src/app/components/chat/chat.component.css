@@ -1,0 +1,27 @@
+.local{
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  color: rgb(84, 84, 139);
+  font-size: 17px;
+  align-self: flex-start;
+}
+
+.remote{
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  color: rgb(230, 114, 139);
+  font-size: 17px;
+  align-self: flex-end;
+}
+
+.chatContainer{
+  flex-direction: column;
+  display: flex;
+  padding: 30px;
+  width: 100%;
+  height: max-content;
+  padding-bottom: 70px;
+}
+

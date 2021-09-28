@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WebSocketService } from 'src/app/services/web-socket.service';
+import { ChatService } from 'src/app/services/chat-service';
 
 @Component({
   selector: 'app-chat',
@@ -14,25 +14,22 @@ export class ChatComponent implements OnInit {
     text: ''
   }
 
-  myMessages: any;
-  eventName = 'send Message';
-  constructor(private activated: ActivatedRoute, private webService : WebSocketService) { }
+  constructor(private activated: ActivatedRoute, public chat : ChatService) { }
 
   ngOnInit(): void {
     const id = this.activated.snapshot.params.id;
     this.userChat.user = id
-
-    this.webService.listen('text-event').subscribe((data) => {
-      this.myMessages = data;
-    })
-
-
   }
 
-  myMessage() {
-    this.webService.emit(this.eventName, this.userChat);
-    this.userChat.text = '';
-    }
+  sendMessage(){
+    let messageInfo = {
+      text: this.userChat.text,
+      user: this.userChat.user,
+      messageType: 1
+    };
+    this.chat.sendMessage(messageInfo);
+    this.userChat.text = "";
+  }
 
 }
 
