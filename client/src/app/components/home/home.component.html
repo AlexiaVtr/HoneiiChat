@@ -1,0 +1,8 @@
+<div class="card text-center">
+  <div class="card-body" id="card">
+    <h5 class="card-title">Welcome! Text your name here:</h5>
+    <input type="text" class="form-control" [(ngModel)]="User.name">
+    <a href="#" class="btn btn-primary btn-block mt-3"
+    [routerLink]="['/chat', User.name]">Go chat</a>
+  </div>
+</div>
