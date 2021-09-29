@@ -7,6 +7,8 @@ import { ChatService } from 'src/app/services/chat-service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
+
+
 export class ChatComponent implements OnInit {
 
   userChat = {
@@ -14,7 +16,11 @@ export class ChatComponent implements OnInit {
     text: ''
   }
 
-  constructor(private activated: ActivatedRoute, public chat : ChatService) { }
+
+
+  constructor(private activated: ActivatedRoute, public chat : ChatService) {
+
+   }
 
   ngOnInit(): void {
     const id = this.activated.snapshot.params.id;
@@ -31,5 +37,5 @@ export class ChatComponent implements OnInit {
     this.userChat.text = "";
   }
 
-}
 
+}

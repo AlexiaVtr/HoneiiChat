@@ -1,16 +1,40 @@
-<div style="width: 40%; margin: auto; margin-top: 100px;">
-  <div>
-      <label for="">Hola <span style="font-weight:bold;">{{userChat.user}}</span>... Escribe algo</label>
+
+<!--
+Inspired by https://dribbble.com/supahfunk
+-->
+<section class="avenue-messenger">
+  <div class="menu">
+   <div class="items"><span>
+     <a href="#" title="Minimize">&mdash;</a><br>
+     <a href="#" title="End Chat">&#10005;</a>
+
+     </span></div>
+    <div class="button">...</div>
   </div>
-  <div class="inputContainer">
-    <form (submit)="sendMessage()">
-        <input [(ngModel)]="userChat.text" type="text" class="form-control" [ngModelOptions]="{standalone: true}">
-    </form>
-  </div>
-  <div class="chatContainer">
-    <div [ngClass]="{'local': message.messageType === 1, 'remote': message.messageType === 2}" *ngFor="let message of chat.chats">
-      <label for="" style="font-weight: bold;">{{message.user}}</label>
-      <span>: {{message.text}}</span>
+  <div class="agent-face">
+    <div class="half">
+     <img class="agent circle" src="https://c.tenor.com/77no-NuGBT0AAAAC/nyanners-vtuber.gif" alt="Jesse Tino" frameborder="0">
     </div>
   </div>
+<div class="chat">
+  <div class="chat-title">
+    <h1> Mariane Jess</h1>
+    <h2>Psicologa</h2>
+  <!--  <figure class="avatar">
+      <img src="http://askavenue.com/img/17.jpg" /></figure>-->
+  </div>
+  <div class="messages">
+    <div class="messages-content">
+      <div [ngClass]="{'local': message.messageType === 1, 'remote': message.messageType === 2}" *ngFor="let message of chat.chats">
+        <span>{{message.text}}</span>
+
+      </div>
+    </div>
+  </div>
+  <form (submit)="sendMessage()" class="message-box">
+      <input [(ngModel)]="userChat.text" type="text" class="message-input"
+      [ngModelOptions]="{standalone: true}" placeholder="Type a message {{userChat.user}}...">
+</form>
 </div>
+<!--<div class="bg"></div>-->
+<script src="./app.js"></script>

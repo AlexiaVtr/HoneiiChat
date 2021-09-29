@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {io} from 'socket.io-client';
-import { Observable, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
