@@ -1,19 +1,30 @@
-'use strict'
 
-const app = require('express')()
-const serverHttp = require('http').Server(app)
-const io = require('socket.io')(serverHttp)
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http,{
+    cors: {
+        origin: true,
+        credentials: true,
+        methods: ["GET", "POST"]
+    }
+});
 
-const myMessages = []
 
-io.on('connection', function(socket){
-    socket.on('send.message', function(data){
-        myMessages.push(data)
-        socket.emit('text-event', myMessages)
-        socket.broadcast.emit('text-event', myMessages)
+
+io.on('connection', (socket) => {
+    console.log("New user connected")
+    
+    socket.on('sendMessage', (messageInfo) => {
+        console.log("New event: send message")
+        socket.broadcast.emit('reseiveMessage', messageInfo)
+
     })
-})
+});
 
-serverHttp.listen(3000, () =>{
-    console.log(`server running on port ${3000}`)
-})
+app.get('/',(req,res) => {
+    res.send('<h1>Hello</h1>')
+});
+
+http.listen(3000, () => {
+    console.log("listen in port 3000")
+});
