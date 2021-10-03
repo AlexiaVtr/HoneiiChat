@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
-import * as countdown from 'countdown';
+//import * as countdown from 'countdown';
 import { ChatService } from 'src/app/services/chat-service';
-import { DateTime, Duration } from 'luxon';
+//import { DateTime, Duration } from 'luxon';
 import { interval, Subscription, Observable, of } from 'rxjs';
 
 
@@ -24,7 +24,6 @@ export class ChatComponent implements OnInit {
     user: '',
     text: '',
   }
-
 //  subscription!: Subscription;
   source = interval(1000);
 //  sec = moment().local()
@@ -40,6 +39,7 @@ export class ChatComponent implements OnInit {
 
   }
   timer = this.countdownNow
+
 
   plus(plus:any, time:any) {
 
@@ -74,25 +74,32 @@ export class ChatComponent implements OnInit {
 //    let text = this.renderer.createText("my button");
 //    this.renderer.appendChild(this.secondId.nativeElement, text);
 //  }
-  timeSubscription = this.source.subscribe({
-    next(num) {
-      let cron = moment().local().format("ss").toString()
-          console.log(cron)
-          return cron
-    }});
+  timeSubscription = this.getSuscribe(this.source)
 
+
+  getSuscribe(source: Observable<number>):string{
+
+    let time = source.subscribe({
+      next(): string {
+        let cron = moment().local().format("ss").toString()
+            console.log(cron)
+            return cron
+      }});
+      return time.add.arguments
+  }
 
   ngAfterViewInit() {
-  this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.timer)};
+  this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.timeSubscription)
+  };
+
+
 
   setProperty() {
-    this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.countdownNow);
+    this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.timeSubscription);
       };
 
-
-
-
 }
+
 
 
 

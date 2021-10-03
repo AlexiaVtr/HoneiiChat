@@ -4,7 +4,7 @@
   <div class="centered">
       <p class="firstLine"> H &nbsp; O &nbsp; N &nbsp; E &nbsp; i &nbsp; i &nbsp;</p>
       <p class="secondLine">¿Te sientes solo? ¡Charla con Honeii!</p>
-      <p> <input class="InputStyle" placeholder="¿Cuál es tu nombre?"
+      <p> <input class="InputStyle" placeholder="¿Cuál es tu nombre?" (keyup.enter)="routerToChat()"
         style="font-family:Arial, FontAwesome" type="text" [(ngModel)]="User.name" > </p>
         <a href="#" class="btn btn-primary btn-block mt-3" style="background-color: rgb(219, 114, 114);"
         [routerLink]="['/chat', User.name]">Ir al chat</a>

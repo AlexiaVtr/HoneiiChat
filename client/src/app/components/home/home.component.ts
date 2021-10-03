@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 
 
 
@@ -11,11 +12,16 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class HomeComponent implements OnInit {
-  User = {
-    name: ""
-  }
-  constructor() { }
 
+  constructor(private router: Router) { }
+
+  User = {
+    name: ''
+  }
+
+  routerToChat(){
+    this.router.navigateByUrl('/chat/'+ this.User.name);
+  }
   ngOnInit(): void {
   }
 
