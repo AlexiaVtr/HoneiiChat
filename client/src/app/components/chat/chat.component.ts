@@ -1,10 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
-//import * as countdown from 'countdown';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/services/chat-service';
-//import { DateTime, Duration } from 'luxon';
-import { interval, Subscription, Observable, of } from 'rxjs';
 
 
 
@@ -17,47 +13,35 @@ import { interval, Subscription, Observable, of } from 'rxjs';
 
 export class ChatComponent implements OnInit {
 
-  @ViewChild("Second", {static: false} ) secondId!: ElementRef;
   @ViewChild("Minute", {static: false} ) minuteId!: ElementRef;
+
+  public minute: number = 15;
+  public second: number = 59;
+
 
   userChat = {
     user: '',
     text: '',
   }
-//  subscription!: Subscription;
-  source = interval(1000);
-//  sec = moment().local()
-//  secondFormat:string = this.sec.format("ss").toString()
-//  min = moment().local().format("mm")
-  countdownNow = () => {
-    const now:any = moment().local().format("mm:ss")
-    const countDate:string = now.plus('15',now)
-    const gap = Number(countDate) - Number(now)
-    const nowSeconds:number = 1000;
-    const nowMinutes:number =  nowSeconds * 60;
-    return "asd"
 
-  }
-  timer = this.countdownNow
-
-
-  plus(plus:any, time:any) {
-
-    let hour = time
-    hour.add(plus, 'minutes');
-
-    return hour.format("mm:ss");
-  }
-
-
-  constructor(private activated: ActivatedRoute, public chat : ChatService, private renderer: Renderer2) {
+  constructor(private activated: ActivatedRoute, public chat : ChatService, private renderer: Renderer2, private router: Router) {
+    let intervalId = setInterval(() => {
+      this.second = this.second - 1;
+      if (this.second === 0 && this.minute > 0){
+        this.minute = this.minute - 1;
+        this.second = 59;
+      }
+      if(this.second === 0 && this.minute === 0){
+        clearInterval(intervalId);
+        this.router.navigateByUrl('');
+      }
+  }, 1000)
 
    }
 
-
   ngOnInit(): void {
     const id = this.activated.snapshot.params.id;
-    this.userChat.user = id
+    this.userChat.user = id;
   }
 
   sendMessage(){
@@ -69,34 +53,6 @@ export class ChatComponent implements OnInit {
     this.chat.sendMessage(messageInfo);
     this.userChat.text = "";
   }
-
-//  addText(){
-//    let text = this.renderer.createText("my button");
-//    this.renderer.appendChild(this.secondId.nativeElement, text);
-//  }
-  timeSubscription = this.getSuscribe(this.source)
-
-
-  getSuscribe(source: Observable<number>):string{
-
-    let time = source.subscribe({
-      next(): string {
-        let cron = moment().local().format("ss").toString()
-            console.log(cron)
-            return cron
-      }});
-      return time.add.arguments
-  }
-
-  ngAfterViewInit() {
-  this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.timeSubscription)
-  };
-
-
-
-  setProperty() {
-    this.renderer.setProperty(this.secondId.nativeElement,'innerHTML', this.timeSubscription);
-      };
 
 }
 
