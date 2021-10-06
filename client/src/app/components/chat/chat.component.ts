@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChatService } from 'src/app/services/chat-service';
-
+import { ChatService, logginAlerts} from 'src/app/services/chat-service';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -15,8 +15,8 @@ export class ChatComponent implements OnInit {
 
   @ViewChild("Minute", {static: false} ) minuteId!: ElementRef;
 
-  public minute: number = 15;
-  public second: number = 59;
+  public minute: number = 0;
+  public second: number = 5;
 
 
   userChat = {
@@ -24,7 +24,9 @@ export class ChatComponent implements OnInit {
     text: '',
   }
 
-  constructor(private activated: ActivatedRoute, public chat : ChatService, private renderer: Renderer2, private router: Router) {
+  constructor(private activated: ActivatedRoute, public chat : ChatService, private router: Router) {
+
+    // Crono:
     let intervalId = setInterval(() => {
       this.second = this.second - 1;
       if (this.second === 0 && this.minute > 0){
@@ -33,7 +35,11 @@ export class ChatComponent implements OnInit {
       }
       if(this.second === 0 && this.minute === 0){
         clearInterval(intervalId);
-        this.router.navigateByUrl('');
+
+        // Alert: Time Out
+        logginAlerts(this.router)
+
+
       }
   }, 1000)
 
@@ -53,6 +59,8 @@ export class ChatComponent implements OnInit {
     this.chat.sendMessage(messageInfo);
     this.userChat.text = "";
   }
+
+
 
 }
 
