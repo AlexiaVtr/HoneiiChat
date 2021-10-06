@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "honeiichat": {
+      "hosting": {
+        "client": [
+          "honeiichat"
+        ]
+      }
+    }
+  }
+}
