@@ -6,16 +6,19 @@
   <img class="star" src="https://data.whicdn.com/images/347738331/original.gif" alt="stars" frameborder="0">
 </div>
 <div class="bk-menu">
+  <img class="logo" src="https://i.postimg.cc/T1ymDMPY/logo.png" alt="logo" frameborder="0">
   <img class="sailor-menu" src="https://i.postimg.cc/3RMNPJx3/menu.png" alt="menu" frameborder="0">
 </div>
 <div class="bg text-center">
   <!--Div for Centered Text & Input-->
   <div class="centered">
+     <!--
       <p class="firstLine"> H &nbsp; O &nbsp; N &nbsp; E &nbsp; i &nbsp; i &nbsp;</p>
       <p class="secondLine">¿Te sientes solo? ¡Charla con Honeii!</p>
+      -->
       <p> <input class="InputStyle" placeholder="¿Cuál es tu nombre?" (keyup.enter)="routerToChat()"
         style="font-family:Arial, FontAwesome" type="text" [(ngModel)]="User.name" > </p>
-        <a href="#" class="btn btn-primary btn-block mt-3" style="background-color: rgb(219, 114, 114);"
-        [routerLink]="['/chat', User.name]">Ir al chat</a>
   </div>
+  <a href="#" class="goChat btn" style="background-color: transparent;"
+  [routerLink]="['/chat', User.name]">Ir al chat</a>
 
