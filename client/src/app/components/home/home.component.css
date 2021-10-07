@@ -1,26 +1,89 @@
+@keyframes beat {
+  from { transform: none; }
+  50% { transform: scale(1.1); }
+  to { transform: none; }
+}
+
+
 .bg {
   width: 100%;
   height: auto;
   min-height: 100vh;
-  background-image: url(https://wallpapercave.com/wp/wp4778521.jpg);
+  background-image: url('C:/Users/Socius/Documents/Proyectos/Chat-Angular/client/src/assets/img/honeii-bk-base.png');
   background-size: 100% 100%;
   background-position: top center
 }
+
+.bk{
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  right: 0;
+  margin: auto;
+  width: 101px;
+  height: 50px;
+  background: transparent;
+  z-index:3;
+}
+
+.circle {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 2px solid #fff;
+  animation: beat .9s infinite;
+  }
+
+  .star{
+    position: absolute;
+    left: 65%;
+    top: 20%;
+    right: 0;
+    margin: auto;
+    width: 450px;
+    height: 450px;
+    background: transparent;
+    z-index:2;
+  }
+  .sailor-menu{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 450px;
+    height: 500px;
+    background: transparent;
+    z-index:2;
+  }
+
 
 .content {
   margin-top: 20%
 }
 
+
 .centered {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  z-index: 3;
+
 }
 
 .InputStyle {
   border-radius: 25px;
-  border: solid 1px white;
+  border: solid 1px rgb(243, 107, 107);
   background: transparent;
   width: 300px;
   padding: 10px 20px
@@ -29,7 +92,7 @@
 input,
 input::-webkit-input-placeholder {
   font-size: 12px;
-  color: white
+  color: rgb(243, 107, 107);
 }
 
 .social-btn {
@@ -40,29 +103,33 @@ input::-webkit-input-placeholder {
 
 i {
   padding: 5px;
-  color: white
+  color: rgb(243, 107, 107);
 }
 
 input,
 input:focus {
-  border: solid 1px white;
+  border: solid 1px rgb(167, 225, 230);
   outline: 0;
   -webkit-appearance: none;
   box-shadow: nones;
   -moz-box-shadow: none;
-  -webkit-box-shadow: none
+  -webkit-box-shadow: none;
 }
 
+
+/*Comment.. */
 .secondLine {
   font-weight: 350;
   font-size: 15px;
   margin-bottom: 15%;
-  color: white
+  color: rgb(233, 119, 153)
 }
 
+
+/*Title... */
 .firstLine {
   font-size: 30px;
-  color: white
+  color: rgb(233, 119, 153)
 }
 
 @media only screen and (max-width: 600px) {

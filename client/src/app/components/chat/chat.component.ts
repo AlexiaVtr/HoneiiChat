@@ -24,7 +24,11 @@ export class ChatComponent implements OnInit {
     text: '',
   }
 
-  constructor(private activated: ActivatedRoute, public chat : ChatService, private router: Router) {
+  constructor(
+    private activated: ActivatedRoute,
+    public chat : ChatService,
+    private router: Router)
+    {
 
     // Crono:
     let intervalId = setInterval(() => {

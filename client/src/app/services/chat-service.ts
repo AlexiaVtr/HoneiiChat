@@ -12,7 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ChatService {
   chats: any[] = [];
 
-  constructor(private socket: WebSocketService, private router: Router) {
+  constructor(
+    private socket: WebSocketService,
+    private router: Router) {
+
     this.onReceiveMessage();
   }
 
