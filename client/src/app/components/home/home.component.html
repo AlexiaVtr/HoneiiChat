@@ -1,6 +1,14 @@
-<!--Div for Background-->
+<!--Div for detail home-->
+<div class="details" *ngIf="show == false">
+  <app-home-details></app-home-details>
+</div>
+
+
+<!--Div for normal home-->
+<div class="home">
 <div class="bk">
-  <img class="agent circle" src="https://i.pinimg.com/564x/1d/41/19/1d411999f93cddde118121ce477e8981.jpg" alt="Honeii" frameborder="0">
+  <img class="agent circle" src="https://i.pinimg.com/564x/1d/41/19/1d411999f93cddde118121ce477e8981.jpg" alt="Honeii"
+   frameborder="0" (click)="show = !show">
 </div>
 <div class="bk-desing">
   <img class="star" src="https://data.whicdn.com/images/347738331/original.gif" alt="stars" frameborder="0">
@@ -19,6 +27,9 @@
       <p> <input class="InputStyle" placeholder="¿Cuál es tu nombre?" (keyup.enter)="routerToChat()"
         style="font-family:Arial, FontAwesome" type="text" [(ngModel)]="User.name" > </p>
   </div>
-  <a href="#" class="goChat btn" style="background-color: transparent;"
-  [routerLink]="['/chat', User.name]">Ir al chat</a>
+  <img href="#" class="goChat btn" [routerLink]="['/chat', User.name]"
+  src="https://i.postimg.cc/BbMZ5NmY/button.png">
+</div>
+
+
 

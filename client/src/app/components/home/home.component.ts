@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
     name: ''
   }
 
+  show:boolean = true;
+
   routerToChat(){
     this.router.navigateByUrl('/chat/'+ this.User.name);
   }
