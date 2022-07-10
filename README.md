@@ -1,4 +1,7 @@
 ## HoneiiChat </br>
+---
+
+⚠️ Still in process 🔨 </br>
 
 ---
 
